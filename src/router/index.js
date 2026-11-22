@@ -5,6 +5,7 @@ const router = createRouter({
   routes: [
     { path: '/', component: () => import('../views/CatalogView.vue'), meta: { title: 'Catálogo' } },
     { path: '/login', component: () => import('../views/LoginView.vue'), meta: { title: 'Bem-vindo' } },
+    { path: '/categorias', component: () => import('../views/CategoriesView.vue'), meta: { title: 'Categorias' } },
   ],
   scrollBehavior: () => ({ top: 0 }),
 })
