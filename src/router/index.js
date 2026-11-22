@@ -3,7 +3,7 @@ import { useLibrary } from '../stores/library'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: '/', component: () => import('../views/LoginView.vue'), meta: { title: 'Início' } },
+    { path: '/', component: () => import('../views/CatalogView.vue'), meta: { title: 'Catálogo' } },
     { path: '/login', component: () => import('../views/LoginView.vue'), meta: { title: 'Bem-vindo' } },
   ],
   scrollBehavior: () => ({ top: 0 }),
