@@ -7,6 +7,7 @@ const router = createRouter({
     { path: '/login', component: () => import('../views/LoginView.vue'), meta: { title: 'Bem-vindo' } },
     { path: '/categorias', component: () => import('../views/CategoriesView.vue'), meta: { title: 'Categorias' } },
     { path: '/acervo', component: () => import('../views/InventoryView.vue'), meta: { title: 'Acervo', admin: true } },
+    { path: '/usuarios', component: () => import('../views/UsersView.vue'), meta: { title: 'Usuários', admin: true } },
   ],
   scrollBehavior: () => ({ top: 0 }),
 })
