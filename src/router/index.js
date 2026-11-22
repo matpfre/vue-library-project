@@ -1,6 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
-export default createRouter({
+import { useLibrary } from '../stores/library'
+const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [],
+  routes: [
+    { path: '/', component: () => import('../views/LoginView.vue'), meta: { title: 'Início' } },
+    { path: '/login', component: () => import('../views/LoginView.vue'), meta: { title: 'Bem-vindo' } },
+  ],
+  scrollBehavior: () => ({ top: 0 }),
 })
+router.beforeEach((to) => {
+  const library = useLibrary()
+  if ((to.meta.admin || to.meta.auth) && !library.session)
+    return { path: '/login', query: { redirect: to.fullPath } }
+  if (to.meta.admin && library.session?.role !== 'admin') return '/emprestimos'
+  document.title = to.meta.title + ' · Biblioteca'
+})
+export default router
