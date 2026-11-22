@@ -9,6 +9,7 @@ const router = createRouter({
     { path: '/acervo', component: () => import('../views/InventoryView.vue'), meta: { title: 'Acervo', admin: true } },
     { path: '/usuarios', component: () => import('../views/UsersView.vue'), meta: { title: 'Usuários', admin: true } },
     { path: '/livros/:id', component: () => import('../views/BookView.vue'), meta: { title: 'Detalhes do livro' } },
+    { path: '/emprestimos', component: () => import('../views/LoansView.vue'), meta: { title: 'Empréstimos', auth: true } },
   ],
   scrollBehavior: () => ({ top: 0 }),
 })
