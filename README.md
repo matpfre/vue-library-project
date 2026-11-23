@@ -1,4 +1,4 @@
-# Biblioteca
+# Estante Viva
 
 Sistema acadêmico de gestão de biblioteca com Vue 3, Composition API, Vite, Vue Router, Pinia e Chart.js.
 

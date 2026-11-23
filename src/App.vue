@@ -33,7 +33,7 @@ const menu = ref(false),
             novos empréstimos.
           </p></template
         ><template v-else
-          ><p><strong>Biblioteca acadêmica · versão 1.0</strong></p>
+          ><p><strong>Estante Viva · versão 1.0</strong></p>
           <p>Os dados são salvos automaticamente neste navegador.</p>
           <dl>
             <div>

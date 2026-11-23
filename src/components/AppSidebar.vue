@@ -28,7 +28,7 @@ function logout() {
   <div v-if="open" class="sidebar-overlay" @click="emit('close')" />
   <aside class="sidebar" :class="{ open }">
     <RouterLink to="/" class="brand"
-      ><AppIcon name="book" :size="29" />BIBLIOTECA<span /></RouterLink
+      ><AppIcon name="book" :size="29" />ESTANTE VIVA<span /></RouterLink
     ><span class="menu-label">MENU PRINCIPAL</span>
     <nav>
       <RouterLink
@@ -56,7 +56,7 @@ function logout() {
     </div>
     <div class="sidebar-bottom">
       <div class="library-mark"><AppIcon name="book" :size="35" /></div>
-      <strong>BOOK LIBRARY</strong><span>Um mundo em cada página.</span
+      <strong>ESTANTE VIVA</strong><span>Um mundo em cada página.</span
       ><small>FEITO PARA QUEM AMA LER</small>
     </div>
   </aside>

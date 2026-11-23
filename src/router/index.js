@@ -48,6 +48,6 @@ router.beforeEach((to) => {
   if ((to.meta.admin || to.meta.auth) && !library.session)
     return { path: '/login', query: { redirect: to.fullPath } }
   if (to.meta.admin && library.session?.role !== 'admin') return '/emprestimos'
-  document.title = to.meta.title + ' · Biblioteca'
+  document.title = to.meta.title + ' · Estante Viva'
 })
 export default router

@@ -15,7 +15,7 @@ const library = useLibrary(),
         <AppIcon name="menu" />
       </button>
       <div>
-        <span class="eyebrow">SEU ESPAÇO DE CONHECIMENTO</span>
+        <span class="eyebrow">ESTANTE VIVA</span>
         <h1>{{ title }}</h1>
       </div>
     </div>
@@ -32,7 +32,7 @@ const library = useLibrary(),
         </button>
         <div v-if="dropdown" class="popover">
           <RouterLink to="/login" @click="dropdown = false">{{
-            library.session ? 'Trocar de conta' : 'Entrar na biblioteca'
+            library.session ? 'Trocar de conta' : 'Entrar na Estante Viva'
           }}</RouterLink
           ><RouterLink to="/emprestimos" @click="dropdown = false">Meus empréstimos</RouterLink>
         </div>
