@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue'
 import AppIcon from './AppIcon.vue'
 import { useLibrary } from '../stores/library'
 import { useRouter } from 'vue-router'
@@ -14,6 +15,9 @@ const links = [
   ['/usuarios', 'Usuários', 'users'],
   ['/painel', 'Painel', 'chart'],
 ]
+const visibleLinks = computed(() =>
+  links.filter(([path]) => !router.resolve(path).meta.admin || library.session?.role === 'admin'),
+)
 function logout() {
   library.session = null
   emit('close')
@@ -28,7 +32,7 @@ function logout() {
     ><span class="menu-label">MENU PRINCIPAL</span>
     <nav>
       <RouterLink
-        v-for="[path, label, icon] in links"
+        v-for="[path, label, icon] in visibleLinks"
         :key="path"
         :to="path"
         :class="{ active: $route.path === path }"

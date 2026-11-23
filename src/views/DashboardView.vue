@@ -8,6 +8,18 @@ import StatusBadge from '../components/StatusBadge.vue'
 const library = useLibrary(),
   canvas = ref(null)
 let chart
+const loansByCategory = computed(() => {
+  const categoriesByBook = new Map(library.books.map((book) => [book.id, book.category]))
+  const counts = new Map()
+
+  for (const loan of library.active) {
+    const category = categoriesByBook.get(loan.bookId)
+    if (category === undefined) continue
+    counts.set(category, (counts.get(category) ?? 0) + 1)
+  }
+
+  return counts
+})
 const upcoming = computed(() =>
   library.active
     .filter((l) => l.dueAt >= Date.now() && l.dueAt <= Date.now() + 7 * 86400000)
@@ -20,21 +32,19 @@ const upcoming = computed(() =>
     })),
 )
 function draw() {
-  const styles = getComputedStyle(document.documentElement)
   chart?.destroy()
+  chart = undefined
+  if (!canvas.value) return
+
+  const styles = getComputedStyle(document.documentElement)
   chart = new Chart(canvas.value, {
     type: 'bar',
     data: {
-      labels: library.categories,
+      labels: [...loansByCategory.value.keys()],
       datasets: [
         {
           label: 'Empréstimos',
-          data: library.categories.map(
-            (c) =>
-              library.loans.filter(
-                (l) => library.books.find((b) => b.id === l.bookId)?.category === c,
-              ).length,
-          ),
+          data: [...loansByCategory.value.values()],
           backgroundColor: styles.getPropertyValue('--coral').trim(),
           borderRadius: 7,
           maxBarThickness: 48,
@@ -53,7 +63,7 @@ function draw() {
   })
 }
 onMounted(draw)
-watch(() => library.loans, draw, { deep: true })
+watch(loansByCategory, draw, { flush: 'post' })
 onUnmounted(() => chart?.destroy())
 </script>
 <template>
@@ -75,8 +85,8 @@ onUnmounted(() => chart?.destroy())
   </div>
   <section class="chart-panel">
     <h2>Empréstimos por categoria</h2>
-    <p>A distribuição de todas as leituras.</p>
-    <div class="chart-container">
+    <p v-if="!loansByCategory.size">Nenhum livro emprestado no momento.</p>
+    <div v-else class="chart-container">
       <canvas ref="canvas" aria-label="Gráfico de empréstimos por categoria" role="img" />
     </div>
   </section>
