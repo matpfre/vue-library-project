@@ -22,13 +22,13 @@ function submit() {
 <template>
   <div class="login-layout">
     <div class="login-story">
-      <AppIcon name="book" :size="50" /><span class="eyebrow">BEM-VINDO À SUA BIBLIOTECA</span>
+      <AppIcon name="book" :size="50" /><span class="eyebrow">BEM-VINDO À ESTANTE VIVA</span>
       <h2>Conecte-se ao<br />seu próximo<br /><em>capítulo.</em></h2>
       <p>Um espaço para descobrir, compartilhar<br />e transformar através da leitura.</p>
     </div>
     <form class="login-form" @submit.prevent="submit">
       <span class="eyebrow coral-text">QUE BOM TER VOCÊ AQUI</span>
-      <h2>Entre na biblioteca</h2>
+      <h2>Entre na Estante Viva</h2>
       <p>Acesse sua conta para continuar.</p>
       <label
         >E-mail<input

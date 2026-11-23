@@ -103,6 +103,6 @@ function search({ query, category }) {
   </section>
   <div class="catalog-footer">
     <AppIcon name="book" :size="18" /><span>Grandes descobertas começam com uma boa leitura.</span
-    ><span>BIBLIOTECA · {{ new Date().getFullYear() }}</span>
+    ><span>ESTANTE VIVA · {{ new Date().getFullYear() }}</span>
   </div>
 </template>
